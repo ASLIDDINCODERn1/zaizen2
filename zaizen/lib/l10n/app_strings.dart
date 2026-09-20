@@ -35,6 +35,10 @@ class AppStrings {
   String get languageScreenTitle => _k('languageScreenTitle');
   String get languageSaved => _k('languageSaved');
   String get languageSearchHint => _k('languageSearchHint');
+  String get languageCurrent => _k('languageCurrent');
+  String get languageAvailable => _k('languageAvailable');
+  String get languageComingSoon => _k('languageComingSoon');
+  String get languageNoResults => _k('languageNoResults');
   String get fullName => _k('fullName');
   String get email => _k('email');
   String get phone => _k('phone');

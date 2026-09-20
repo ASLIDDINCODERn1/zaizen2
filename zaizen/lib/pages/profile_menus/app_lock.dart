@@ -10,10 +10,10 @@ import 'package:zaizen/pages/homepage.dart';
 import 'package:zaizen/ui/language_picker_bar.dart';
 
 class AppColors {
-  static const Color bgTop = Color(0xFF0F172A);
-  static const Color bgBottom = Color(0xFF020617);
-  static const Color surface = Color(0xFF1E293B);
-  static const Color border = Color(0xFF334155);
+  static const Color bgTop = Color(0xFF0A0E17);
+  static const Color bgBottom = Color(0xFF0A0E17);
+  static const Color surface = Color(0xFF11151F);
+  static const Color border = Color(0xFF232838);
   static const Color primary = Color(0xFF3B82F6);
   static const Color textPrimary = Color(0xFFF8FAFC);
   static const Color textMuted = Color(0xFF94A3B8);

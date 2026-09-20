@@ -35,11 +35,17 @@ class _HomeScreenState extends State<HomeScreen> {
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: dark ? Brightness.light : Brightness.dark,
+        systemNavigationBarColor: c.bgBottom,
+        systemNavigationBarIconBrightness: dark ? Brightness.light : Brightness.dark,
       ),
       child: Scaffold(
+        backgroundColor: c.bgBottom,
         extendBody: true,
         body: Container(
+          width: double.infinity,
+          height: double.infinity,
           decoration: BoxDecoration(
+            color: c.bgBottom,
             gradient: LinearGradient(
               colors: [c.bgTop, c.bgBottom],
               begin: Alignment.topCenter,
@@ -70,12 +76,14 @@ class _FloatingNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = context.watch<LocaleProvider>().strings;
     final c = ZColors.of(context);
+    final pad = MediaQuery.paddingOf(context);
+    final bottomInset = pad.bottom > 0 ? pad.bottom + 4 : 14.0;
     return Padding(
       padding: EdgeInsets.fromLTRB(
         PageGutters.navSide(context),
         0,
         PageGutters.navSide(context),
-        18,
+        bottomInset,
       ),
       child: Container(
         height: 66,

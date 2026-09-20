@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:zaizen/core/app_permissions.dart';
 import 'package:zaizen/locale_provider.dart';
+import 'package:zaizen/pages/dictionary_page.dart';
 import 'package:zaizen/pages/lessons/lessons_path.dart';
 import 'package:zaizen/pages/realtime/realtime_page.dart';
 import 'package:zaizen/ui/app_theme.dart';
@@ -67,13 +68,23 @@ class HomeHubSection extends StatelessWidget {
   const HomeHubSection({super.key});
 
   Future<void> _openRealtime(BuildContext context) async {
-    final ok = await AppPermissions.ensure(context, AppPermissionKind.microphone);
+    final ok = await AppPermissions.ensure(
+      context,
+      AppPermissionKind.microphone,
+    );
     if (!ok || !context.mounted) return;
-    Navigator.of(context).push(CupertinoPageRoute(builder: (_) => const RealtimePage()));
+    Navigator.of(context)
+        .push(CupertinoPageRoute(builder: (_) => const RealtimePage()));
   }
 
   void _openLessons(BuildContext context) {
-    Navigator.of(context).push(CupertinoPageRoute(builder: (_) => const LessonsPathScreen()));
+    Navigator.of(context)
+        .push(CupertinoPageRoute(builder: (_) => const LessonsPathScreen()));
+  }
+
+  void _openDictionary(BuildContext context) {
+    Navigator.of(context)
+        .push(CupertinoPageRoute(builder: (_) => const DictionaryPage()));
   }
 
   @override
@@ -103,6 +114,7 @@ class HomeHubSection extends StatelessWidget {
                 icon: CupertinoIcons.textformat,
                 title: t['dict']!,
                 subtitle: t['dictSub']!,
+                onTap: () => _openDictionary(context),
               ),
             ),
           ],
@@ -133,12 +145,19 @@ class _Pane extends StatelessWidget {
       decoration: BoxDecoration(
         color: c.surface.withValues(alpha: 0.78),
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: Color.fromRGBO(255, 255, 255, 0.06), width: 0.8),
+        border: Border.all(
+          color: Color.fromRGBO(255, 255, 255, 0.06),
+          width: 0.8,
+        ),
       ),
       child: child,
     );
     if (onTap == null) return pane;
-    return GestureDetector(behavior: HitTestBehavior.opaque, onTap: onTap, child: pane);
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap,
+      child: pane,
+    );
   }
 }
 
@@ -166,7 +185,12 @@ class _FeatureCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final VoidCallback onTap;
-  const _FeatureCard({required this.icon, required this.title, required this.subtitle, required this.onTap});
+  const _FeatureCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +206,10 @@ class _FeatureCard extends StatelessWidget {
             child: Container(
               width: 120,
               height: 120,
-              decoration: BoxDecoration(shape: BoxShape.circle, color: c.primary.withValues(alpha: 0.10)),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: c.primary.withValues(alpha: 0.10),
+              ),
             ),
           ),
           Padding(
@@ -204,13 +231,27 @@ class _FeatureCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(title, style: TextStyle(color: c.textPrimary, fontWeight: FontWeight.w700, fontSize: 17)),
+                      Text(
+                        title,
+                        style: TextStyle(
+                          color: c.textPrimary,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17,
+                        ),
+                      ),
                       const SizedBox(height: 4),
-                      Text(subtitle, style: TextStyle(color: c.textMuted, fontSize: 13)),
+                      Text(
+                        subtitle,
+                        style: TextStyle(color: c.textMuted, fontSize: 13),
+                      ),
                     ],
                   ),
                 ),
-                Icon(CupertinoIcons.chevron_forward, size: 16, color: c.textMuted),
+                Icon(
+                  CupertinoIcons.chevron_forward,
+                  size: 16,
+                  color: c.textMuted,
+                ),
               ],
             ),
           ),
@@ -224,7 +265,11 @@ class _ChatCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final VoidCallback onTap;
-  const _ChatCard({required this.title, required this.subtitle, required this.onTap});
+  const _ChatCard({
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -245,9 +290,23 @@ class _ChatCard extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: c.textPrimary, fontWeight: FontWeight.w700, fontSize: 15)),
+            Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: c.textPrimary,
+                fontWeight: FontWeight.w700,
+                fontSize: 15,
+              ),
+            ),
             const SizedBox(height: 2),
-            Text(subtitle, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: c.textMuted, fontSize: 12)),
+            Text(
+              subtitle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: c.textMuted, fontSize: 12),
+            ),
           ],
         ),
       ),
@@ -259,13 +318,20 @@ class _MiniCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String subtitle;
-  const _MiniCard({required this.icon, required this.title, required this.subtitle});
+  final VoidCallback onTap;
+  const _MiniCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     final c = ZColors.of(context);
     return _Pane(
       height: 118,
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
         child: Column(
@@ -273,9 +339,23 @@ class _MiniCard extends StatelessWidget {
           children: [
             _HubIcon(icon),
             const Spacer(),
-            Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: c.textPrimary, fontWeight: FontWeight.w700, fontSize: 15)),
+            Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: c.textPrimary,
+                fontWeight: FontWeight.w700,
+                fontSize: 15,
+              ),
+            ),
             const SizedBox(height: 2),
-            Text(subtitle, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: c.textMuted, fontSize: 12)),
+            Text(
+              subtitle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: c.textMuted, fontSize: 12),
+            ),
           ],
         ),
       ),
@@ -287,7 +367,11 @@ class _StripCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String subtitle;
-  const _StripCard({required this.icon, required this.title, required this.subtitle});
+  const _StripCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -305,8 +389,18 @@ class _StripCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: TextStyle(color: c.textPrimary, fontWeight: FontWeight.w700, fontSize: 14.5)),
-                  Text(subtitle, style: TextStyle(color: c.textMuted, fontSize: 12)),
+                  Text(
+                    title,
+                    style: TextStyle(
+                      color: c.textPrimary,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14.5,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(color: c.textMuted, fontSize: 12),
+                  ),
                 ],
               ),
             ),

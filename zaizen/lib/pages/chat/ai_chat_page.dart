@@ -93,9 +93,12 @@ class _AiChatPageState extends State<AiChatPage> {
     final hints = AiTutor.hints(code);
     final copy = _copy(code);
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: c.bgBottom,
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
+          color: c.bgBottom,
           gradient: LinearGradient(
             colors: [c.bgTop, c.bgBottom],
             begin: Alignment.topCenter,

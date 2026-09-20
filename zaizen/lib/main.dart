@@ -87,8 +87,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF3B82F6),
           brightness: Brightness.dark,
+          surface: const Color(0xFF11151F),
         ),
-        scaffoldBackgroundColor: const Color(0xFF0A3D91),
+        scaffoldBackgroundColor: const Color(0xFF0A0E17),
       ),
       builder: (context, child) {
         StatusBarGuard.hide();

@@ -39,8 +39,8 @@ class ZColors {
     return ZColors(context.watch<ThemeProvider>().isDark);
   }
 
-  Color get bgTop => isDark ? const Color(0xFF0D1526) : const Color(0xFFF3F6FB);
-  Color get bgBottom => isDark ? const Color(0xFF05070C) : const Color(0xFFE7EDF6);
+  Color get bgTop => isDark ? const Color(0xFF0A0E17) : const Color(0xFFF3F6FB);
+  Color get bgBottom => isDark ? const Color(0xFF0A0E17) : const Color(0xFFF3F6FB);
   Color get surface => isDark ? const Color(0xFF11151F) : const Color(0xFFFFFFFF);
   Color get border => isDark ? const Color(0xFF232838) : const Color(0xFFD7E0EC);
   Color get textPrimary => isDark ? Colors.white : const Color(0xFF0F172A);

@@ -125,13 +125,16 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
         ),
         centerTitle: true,
       ),
+      backgroundColor: AppColors.bgBottom,
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
+          color: AppColors.bgBottom,
           gradient: LinearGradient(
             colors: [AppColors.bgTop, AppColors.bgBottom],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            stops: [0.0, 0.6],
           ),
         ),
         child: SafeArea(

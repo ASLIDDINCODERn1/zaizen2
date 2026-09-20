@@ -80,7 +80,10 @@ class _SecurityScreenState extends State<SecurityScreen> {
         centerTitle: true,
       ),
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
+          color: c.bgBottom,
           gradient: LinearGradient(
             colors: [c.bgTop, c.bgBottom],
             begin: Alignment.topCenter,

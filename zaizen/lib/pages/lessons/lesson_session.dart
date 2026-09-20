@@ -36,9 +36,12 @@ class _LessonSessionScreenState extends State<LessonSessionScreen> {
     final t = _t(context.watch<LocaleProvider>().locale.languageCode);
     final canCheck = _picked != null;
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: c.bgBottom,
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
+          color: c.bgBottom,
           gradient: LinearGradient(colors: [c.bgTop, c.bgBottom], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
         child: SafeArea(

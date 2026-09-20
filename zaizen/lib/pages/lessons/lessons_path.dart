@@ -69,9 +69,12 @@ class LessonsPathScreen extends StatelessWidget {
     final c = ZColors.of(context);
     final t = _copy(context.watch<LocaleProvider>().locale.languageCode);
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: c.bgBottom,
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
+          color: c.bgBottom,
           gradient: LinearGradient(
             colors: [c.bgTop, c.bgBottom],
             begin: Alignment.topCenter,

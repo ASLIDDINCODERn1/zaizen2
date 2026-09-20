@@ -510,6 +510,7 @@ class _SubBaseScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.bgBottom,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -533,12 +534,14 @@ class _SubBaseScaffold extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
+          color: AppColors.bgBottom,
           gradient: LinearGradient(
             colors: [AppColors.bgTop, AppColors.bgBottom],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            stops: [0.0, 0.6],
           ),
         ),
         child: SafeArea(child: body),

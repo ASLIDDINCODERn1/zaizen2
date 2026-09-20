@@ -95,7 +95,7 @@ class _AuthGateState extends State<AuthGate> with WidgetsBindingObserver {
     }
     if (_checkingPin) {
       return const Scaffold(
-        backgroundColor: Color(0xFF0A3D91),
+        backgroundColor: Color(0xFF0A0E17),
         body: Center(child: CupertinoActivityIndicator(color: Colors.white)),
       );
     }

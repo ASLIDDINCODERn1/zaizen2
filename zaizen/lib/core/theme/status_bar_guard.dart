@@ -12,7 +12,7 @@ class StatusBarGuard extends StatefulWidget {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
         systemStatusBarContrastEnforced: false,
-        systemNavigationBarColor: Color(0xFF05070C),
+        systemNavigationBarColor: Color(0xFF0A0E17),
         systemNavigationBarIconBrightness: Brightness.light,
         systemNavigationBarContrastEnforced: false,
       ),
